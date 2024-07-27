@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3D Model Viewer with AR</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      .demo {
+        position: relative; /* Container for positioning the AR button */
+        width: 100%;
+        height: 100vh;
+        background: url('https://pub-08370a5111b645c4a5edc0e3028ac40b.r2.dev/bgpn.png') no-repeat center center;
+        background-size: contain; /* Changed from contain to cover for full background coverage */
+      }
+      .model-container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative; /* Ensure model-container is positioned relative for the button to align */
+      }
+      model-viewer {
+        width: 80%; /* Adjust the width of the model */
+        height: 80vh; /* Adjust the height of the model */
+        transform: scale(0.8); /* Scale the model */
+        transform-origin: center center; /* Scale from the center */
+      }
+      #ar-button {
+        position: absolute;
+        bottom: 15%; /* Adjust the distance from the bottom as needed */
+        left: 50%;
+        transform: translateX(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      <div class="model-container">
+        <model-viewer
+          src="https://pub-08370a5111b645c4a5edc0e3028ac40b.r2.dev/scene2.glb"
+          alt="A 3D model"
+          auto-rotate
+          camera-controls
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+        >
+          <button slot="ar-button" id="ar-button">
+            <img src="https://pub-08370a5111b645c4a5edc0e3028ac40b.r2.dev/arbutt.png" alt="buttonpng" border="0" />
+          </button>
+        </model-viewer>
+      </div>
+    </div>
+  </body>
+</html>
